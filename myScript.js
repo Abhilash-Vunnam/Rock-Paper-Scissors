@@ -1,53 +1,37 @@
+//randomly generated computer move
+
 function getComputerChoice(){
-    let computerChoice=["rock", "paper", "scissors"];
-    const randomIndex=Math.floor(Math.random()*computerChoice.length);
-    return computerChoice[randomIndex];
+  let computerSelection=["rock", 'paper', 'scissors']
+  let randomIndex=Math.floor(Math.random()*computerSelection.length);
+  return computerSelection[randomIndex]
+  
 }
-const computerSelection=getComputerChoice()
-console.log(computerSelection);
+const computerSelection = getComputerChoice();
+console.log(computerSelection)
 
-function playRound(playerSelection, computerSelection) {
-  const playerSelections = playerSelection.toLowerCase();
-  const computerSelections = computerSelection.toLowerCase();
- 
-
-
-  const results = {
-    rock: {
-      beats: "scissors",
-      loses: "paper"
-    },
-    scissors: {
-      beats: "paper",
-      loses: "rock"
-    },
-    paper: {
-      beats: "rock",
-      loses: "scissors"
-    }
-  };
-
-  if (playerSelections === computerSelections) {
-      score=-1
-    return "It's a tie";
-  } else {
-    const playerMove = results[playerSelections];
-    const computerMove = results[computerSelections];
-    if(playerSelections==computerMove.loses){
-      score=1
-      return `you win! ${playerSelections} beats ${computerSelections}`;
-    }
-    else{
-      score=0
-      return `you lose! ${computerSelections} beats ${playerSelections} `;
-    }
-    
-    
+// a function that plays single round of game
+function playRound(playerSelection, computerSelection){
+  // converting  both strings to lower case
+  let playerChoice=playerSelection.toLowerCase();
+  let computerChoice=computerSelection.toLowerCase();
+  // finding the winner
+  if(playerChoice===computerChoice){
+    return "its a tie"
+  }else if(playerChoice=="rock" && computerChoice=="scissors"){
+    return `you win! rock beats scissors`
+  }
+  else if(playerChoice=="paper" && computerChoice=="rock"){
+    return `you win! paper beats rock`
+  }else if(playerChoice=="scissors" && computerChoice=="paper"){
+    return `you win! scissors beats paper`
+  }else{
+    return `you Lose! ${computerChoice} beats ${playerChoice}`
   }
 }
 
-const playerSelection="rock"
-const game=playRound(playerSelection, computerSelection)
-console.log(game)
+
+const playerSelection = "scissors";
+
+console.log(playRound(playerSelection, computerSelection));
 
 
