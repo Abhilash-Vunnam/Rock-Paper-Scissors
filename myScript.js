@@ -8,6 +8,7 @@ function getComputerChoice(){
 }
 const computerSelection = getComputerChoice();
 
+
 // a function that plays single round of game
 function playRound(playerSelection, computerSelection){
   // converting  both strings to lower case
