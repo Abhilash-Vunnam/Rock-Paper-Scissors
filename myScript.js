@@ -6,7 +6,6 @@ function getComputerChoice(){
   return computerSelection[randomIndex]
   
 }
-const computerSelection = getComputerChoice();
 
 
 // a function that plays single round of game
@@ -33,40 +32,22 @@ function playRound(playerSelection, computerSelection){
     return `you Lose! ${computerChoice} beats ${playerChoice}`
   }
 }
-// this function is used to play the game for 5 times and announce the winner at the end 
-function game(){
-  let playerScore=0;
-  let computerScore=0;
-  let Ties=0;
 
-  for (i=0; i<5; i++){
-    const computerSelection = getComputerChoice();
-    let playerSelection=prompt("type your choice ")
-    const Rps=playRound(playerSelection, computerSelection)
-    if (result===1){
-      playerScore++;
-    }else if(result===-1){
-      computerScore++;
-    }else if(result===0){
-      Ties++
-    }else{
-      continue
-    }
-    
-  }
-  console.log(playerScore)
-  console.log(computerScore)
-  console.log(Ties)
-  if(playerScore>computerScore){
-     
-  }else if(playerScore<computerScore){
-    console.log("computer won!")
-  }else{
-    console.log("it's Tie")
-  }
+// adding event listener for all the buttons that calls the function playRound with correct playerSection
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach((button) => {
+
+
+  button.addEventListener('click', ()=>{
+    let playerSelection=button.id
+    let computerSelection = getComputerChoice();
+    console.log(playerSelection)
+    console.log(computerSelection)
+    let game=playRound(playerSelection, computerSelection)
+    console.log(game)
+  })
+
   
-
-}
-
-let a=game()
+});
 
